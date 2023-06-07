@@ -13,16 +13,15 @@
                         <h5>List posts</h5>
                         <a href="{{ route('posts.create') }}" class="btn btn-success">Create new post</a>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
                         @foreach ($posts as $post)
-                            <div class="card-body" style="overflow: hidden">
+                            <div class="card-body" style="overflow: hidden; width: 50%;">
                                 <div class="card">
                                     <div class="img-box">
-                                        <img style="height: 250px;" src="{{ $post->cover }}"
-                                            alt="post_image" />
+                                        <img style="height: 250px;" src="{{ $post->cover }}" alt="post_image" />
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $post->title }} </h5>
+                                        <h5 class="card-title">{{ Str::limit($post->title, 35) }} </h5>
                                         <span class="">views: {{ $post->views }}</span>
                                         <p class="card-text">{{ \Str::limit($post->description, 20) }}</p>
                                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">Show</a>
